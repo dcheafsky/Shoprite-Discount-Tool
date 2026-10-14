@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>ShopRite Discount Extension Popup</title>
+    <style>
+      body { font-family: sans-serif; font-size: 14px; color: #111; padding: 12px; width: 240px; margin: 0; }
+      button { font: inherit; cursor: pointer; }
+      :focus-visible { outline: 2px solid #1a5fb4; outline-offset: 2px; }
+      .primary { width: 100%; padding: 8px; border: 0; border-radius: 4px; background: #2e7d32; color: white; font-weight: bold; }
+      .primary:hover { background: #256528; }
+      .primary:disabled { background: #767676; cursor: not-allowed; }
+      .status { margin: 8px 0 0; font-size: 13px; }
+      /* collapse when empty, but never display: none - a live region has to stay in the accessibility tree, or the
+         text put in it isn't announced */
+      .status:empty { margin: 0; }
+      #prefsStatus { transition: opacity 0.1s; }
+      #prefsStatus.fading { opacity: 0; }
+
+      h2 { margin: 14px 0 0; font-size: inherit; }
+      #prefsToggle {
+        display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 8px 0;
+        border: 0; border-top: 1px solid #ccc; background: none; color: inherit; font-weight: bold; text-align: left;
+      }
+      .chevron { transition: transform 0.15s; }
+      #prefsToggle[aria-expanded="true"] .chevron { transform: rotate(90deg); }
+
+      .field { margin-top: 10px; }
+      .field label { display: block; }
+      .field input { box-sizing: border-box; width: 100%; margin-top: 4px; padding: 4px 6px; font: inherit; }
+      .field input[aria-invalid="true"] { border: 2px solid #b00020; }
+      .error { margin: 4px 0 0; font-size: 13px; color: #b00020; }
+      .error:empty { display: none; }
+      .check { display: flex; align-items: flex-start; gap: 6px; }
+      .field .check input { width: auto; margin: 2px 0 0; }
+      .hint { margin: 4px 0 0; font-size: 13px; color: #555; }
+      #prefsPanel .primary { margin-top: 12px; }
+    </style>
+  </head>
+  <body>
+    <button type="button" id="sortAllBtn" class="primary">Sort All Pages by Discount</button>
+    <p id="sortAllBusy" class="status" hidden>Please wait until the existing process is complete.</p>
+    <p id="sortAllStatus" class="status" role="status"></p>
+
+    <h2>
+      <button type="button" id="prefsToggle" aria-expanded="false" aria-controls="prefsPanel">
+        Update Preferences<span class="chevron" aria-hidden="true">&#x25B8;</span>
+      </button>
+    </h2>
+    <form id="prefsPanel" aria-labelledby="prefsToggle" novalidate hidden>
+      <div class="field">
+        <label for="goodThreshold">Minimum good discount % (&ge;)</label>
+        <input type="number" id="goodThreshold" inputmode="numeric" min="0" max="100" step="1" required aria-describedby="goodThresholdError" />
+        <p id="goodThresholdError" class="error"></p>
+      </div>
+      <div class="field">
+        <label for="badThreshold">Maximum bad discount % (&le;)</label>
+        <input type="number" id="badThreshold" inputmode="numeric" min="0" max="100" step="1" required aria-describedby="badThresholdError" />
+        <p id="badThresholdError" class="error"></p>
+      </div>
+      <div class="field">
+        <label for="itemsPerPage">Items per page (max 100)</label>
+        <input type="number" id="itemsPerPage" inputmode="numeric" min="1" max="100" step="1" required aria-describedby="itemsPerPageError" />
+        <p id="itemsPerPageError" class="error"></p>
+      </div>
+      <div class="field">
+        <div class="check">
+          <input type="checkbox" id="myItemsFirst" aria-describedby="myItemsFirstHint" />
+          <label for="myItemsFirst">Show favorites and previously purchased items first</label>
+        </div>
+        <p id="myItemsFirstHint" class="hint">When logged in to ShopRite. Applies to results loaded after saving.</p>
+      </div>
+      <button type="submit" class="primary">Save</button>
+      <p id="prefsStatus" class="status" role="status"></p>
+    </form>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
