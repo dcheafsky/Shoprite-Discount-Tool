@@ -21,6 +21,8 @@ A Chrome extension I made for my own benefit when grocery shopping on ShopRite's
 - Lets you choose how many results show per page (the site's 30, up to 100).
 - Optionally puts your favorites, then items you've bought before, first (when logged in), each still sorted by discount.
 
+<img width="498" height="570" alt="image" src="https://github.com/user-attachments/assets/8516fa49-53e0-43e3-a098-0a7423028afa" />
+
 ## How it came together
 
 It started off very simple: grab the prices from the product cards on the page using reliable selectors, use some simple logic to calculate each item's discount, and append it as a visible badge.
