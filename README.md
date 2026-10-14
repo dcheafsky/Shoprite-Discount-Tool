@@ -13,9 +13,11 @@ A Chrome extension I made for my own benefit when grocery shopping on ShopRite's
 
 ## What it does
 
+<img width="1296" height="587" alt="image" src="https://github.com/user-attachments/assets/f0a9545e-d88a-4a43-82a6-35ff3c59161d" />
+
 - Adds a "% off" badge to every product, rated as a good, average or bad deal by your own thresholds.
 - Sorts each page of results so the best discounts come first.
-- **Sort All Pages by Discount:** sorts every result of a search, the weekly sale items or a department across all of its pages, so page 1 has the best deals of everything. You can leave out departments first (for example, everything except Baby).
+- **Sort All Pages by Discount:** sorts every result of a search, the weekly sale items or a department across all of its pages, so page 1 has the best deals of everything. You can also filter by departments, omitting any that would appear in the results (for example, including everything except the "Pets" & "Floral" departments).
 - Lets you choose how many results show per page (the site's 30, up to 100).
 - Optionally puts your favorites, then items you've bought before, first (when logged in), each still sorted by discount.
 
@@ -41,6 +43,9 @@ I set the direction for each feature and tested it on the live site, validating 
 ## Customization
 
 I wanted to keep this customizable, so I added a preferences section to the popup where you can choose how many results you want per page, what you consider a good or bad discount (which changes the badges), and whether your favorites and items you've bought before should come first.
+
+<img width="307" height="438" alt="image" src="https://github.com/user-attachments/assets/b2c8f292-21c0-4b60-a163-a9d2908d3fc8" />
+
 
 ## Accessibility
 
